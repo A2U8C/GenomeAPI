@@ -23,3 +23,22 @@ htmlcov/
 .coverage
 .coverage.*
 *,cover
+
+environment.yml
+matplot.py
+requirements.txt
+
+# Environments
+genomeEnv/
+ldscEnv/
+ldsc/
+
+/genomeEnv
+/ldscEnv
+/ldsc
+
+
+#Processed Data
+RegenieTextData/
+dbAccess/
+LDSC_Stats/
