@@ -39,6 +39,17 @@ ldsc/
 
 
 #Processed Data
-RegenieTextData/
-dbAccess/
-LDSC_Stats/
+RegenieTextData/*.log
+RegenieTextData/*.results
+RegenieTextData/*.csv
+RegenieTextData/*.txt
+
+dbAccess/*.log
+dbAccess/*.gz
+dbAccess/*.csv
+dbAccess/*.txt
+
+LDSC_Stats/*.log
+LDSC_Stats/*.results
+LDSC_Stats/*.csv
+LDSC_Stats/*.txt
