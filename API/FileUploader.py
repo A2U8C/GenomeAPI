@@ -4,7 +4,7 @@ from flask import request, jsonify
 from werkzeug.utils import secure_filename
 
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif',"zip"])
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -27,7 +27,7 @@ class FileUploader(Resource):
 
         # Check all files and Upload if no errors 
         for file in files:
-            print(type(file))
+            
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(UPLOAD_FOLDER + "/" + filename)

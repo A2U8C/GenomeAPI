@@ -1,1 +1,1 @@
-UPLOAD_FOLDER = "static/Uploads"
+UPLOAD_FOLDER = "/ifs/loni/faculty/njahansh/GAMBIT"

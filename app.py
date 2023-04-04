@@ -24,7 +24,7 @@ api = Api(app)
 # api.add_resource(CohortList,'/cohorts') #Done
 api.add_resource(FileUploader,'/upload')
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
     app.run(host="0.0.0.0", debug=True)
 
 
