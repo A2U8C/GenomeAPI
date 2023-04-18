@@ -1,1 +1,1 @@
-UPLOAD_FOLDER = "/ifs/loni/faculty/njahansh/GAMBIT"
+UPLOAD_FOLDER = "/ifs/loni/faculty/njahansh/GAMBIT/genome_WebApplication/static/UploadedFiles"
