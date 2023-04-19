@@ -12,6 +12,11 @@ from ModuleMunge.MungePrep import Munging
 from ModuleLDSC.CommonLDSC import HeritabilityLDSC
 from API.CommonStats.AllCommonStats import HeritabilityStats,CellTypeStats
 
+# from API.CommonBash.AllCommonBash import HeritabilityBash, CellTypeBash
+
+from API.commonList import listLDSCFiles,plotLDSC
+
+
 from constants import UPLOAD_FOLDER
 from API.FileUploader import FileUploader
 
@@ -26,11 +31,18 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 api = Api(app)
 
-# api.add_resource(CohortList,'/cohorts') #Done
 api.add_resource(FileUploader,'/upload')
+
+# api.add_resource(HeritabilityBash, '/file_info')
+# api.add_resource(CellTypeBash, '/analysis_info')
 
 api.add_resource(HeritabilityStats, '/file_info')
 api.add_resource(CellTypeStats, '/analysis_info')
+
+api.add_resource(listLDSCFiles, '/allLDSCCell')
+api.add_resource(plotLDSC, '/plotLDSC')
+
+
 
 '''
 # file_name="/ifs/loni/faculty/njahansh/nerds/iyad/CPcal_UKBB/Genetics/BioGen/rs2/discovery_chr6_Third_Ventricle_CPcal_log.regenie"
@@ -55,35 +67,4 @@ api.add_resource(CellTypeStats, '/analysis_info')
 # print(HeritVari.post(file_name))
 
 if __name__ == "__main__":  
-    app.run(host="0.0.0.0", debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    app.run(host="0.0.0.0",port=8080, debug=True)
