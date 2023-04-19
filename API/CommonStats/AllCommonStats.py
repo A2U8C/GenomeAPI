@@ -5,6 +5,7 @@ from flask_cors import CORS, cross_origin
 from collections import OrderedDict
 from ModuleMunge.MungePrep import Munging
 from ModuleLDSC.CommonLDSC import HeritabilityLDSC,CellTypeLDSC
+from constants import PROCESSED_FILES
 
 
 
@@ -16,10 +17,12 @@ class HeritabilityStats(Resource):
     def post(self):
         MainFilePath=request.get_json()["file_path"]
         mng=Munging(MainFilePath)
-        filesGZ_name="/ifs/loni/faculty/njahansh/nerds/ankush/webApplication_Genome/Git_Genome/GenomeAPI/dbAccess/"+mng.fileName+".sumstats.gz"
+        # filesGZ_name="/ifs/loni/faculty/njahansh/nerds/ankush/webApplication_Genome/Git_Genome/GenomeAPI/dbAccess/"+mng.fileName+".sumstats.gz"
+        filesGZ_name=PROCESSED_FILES+"MungedData/"+mng.fileName+".sumstats.gz"
         HeriditySummary=HeritabilityLDSC(filesGZ_name)
         
-        resultsFilePath="/ifs/loni/faculty/njahansh/nerds/ankush/webApplication_Genome/Git_Genome/GenomeAPI/LDSC_Stats/"+HeriditySummary.statFileName+".results"
+        # resultsFilePath="/ifs/loni/faculty/njahansh/nerds/ankush/webApplication_Genome/Git_Genome/GenomeAPI/LDSC_Stats/"+HeriditySummary.statFileName+".results"
+        resultsFilePath=PROCESSED_FILES+"LDSC_Stats/"+HeriditySummary.statFileName+".results"
         df=pd.read_csv(resultsFilePath,sep="\t").to_json(orient="records")
         
         return df
@@ -34,6 +37,7 @@ class CellTypeStats(Resource):
         MainFilePath= request.get_json()["file_path"]
         #mng=Munging(MainFilePath)
         #filesGZ_name="/ifs/loni/faculty/njahansh/nerds/ankush/webApplication_Genome/Git_Genome/GenomeAPI/dbAccess/"+mng.fileName+".sumstats.gz"
+        # filesGZ_name=PROCESSED_FILES+"MungedData/"+mng.fileName+".sumstats.gz"
         filesGZ_name=MainFilePath
         HeriditySummary=CellTypeLDSC(filesGZ_name)
 
@@ -41,6 +45,8 @@ class CellTypeStats(Resource):
         
         
         # resultsFilePath="/ifs/loni/faculty/njahansh/nerds/ankush/webApplication_Genome/Git_Genome/GenomeAPI/LDSC_Stats/"+HeriditySummary.statFileName+".results"
+        # resultsFilePath=PROCESSED_FILES+"LDSC_Stats/"+HeriditySummary.statFileName+".results"
+        
         # df=pd.read_csv(resultsFilePath,sep="\t").to_json(orient="records")
         
         # return df
